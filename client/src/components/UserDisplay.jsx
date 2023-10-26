@@ -26,7 +26,7 @@ export default function UserDisplay() {
           username: username,
         })
         .then((response) => {
-          setListofUsers([...listofUsers, response.data]);
+          setListofUsers((prevList) => [...prevList, response.data]);
           setName("");
           setAge(0);
           setUsername("");
@@ -42,11 +42,13 @@ export default function UserDisplay() {
       if (sortOption === "none") {
         return user;
       } else if (sortOption === "option1") {
-        return user.age > 30;
+        return user.age >= 60;
       } else if (sortOption === "option2") {
-        return user.age < 30 && user.age > 0;
+        return user.age >= 30 && user.age < 60;
       } else if (sortOption === "option3") {
-        return user.age == null || user.age === "";
+        return user.age >= 18 && user.age < 30;
+      } else if (sortOption === "option4") {
+        return user.age < 18 && user.age >= 0;
       } else {
         return true;
       }
@@ -96,9 +98,10 @@ export default function UserDisplay() {
           }}
         >
           <option value="none"> None </option>
-          <option value="option1"> Age &gt; 30</option>
-          <option value="option2"> Age &lt; 30 </option>
-          <option value="option3"> No Age </option>
+          <option value="option1"> Age &ge; 60</option>
+          <option value="option2"> Age &lt; 60 and &ge; 30 </option>
+          <option value="option3"> Age &lt; 30 and &ge; 18 </option>
+          <option value="option4"> Age &lt; 18 and &ge; 0 </option>
         </select>
         <button
           onClick={filteredUsers}
@@ -108,10 +111,10 @@ export default function UserDisplay() {
           Filter User
         </button>
       </div>
-      <div>
+      <div className="grid grid-cols-3">
         {filterUsers.map((user) => {
           return (
-            <div key={user.id} className="text-2xl m-5 text-white">
+            <div key={user.id} className="text-2xl m-5 text-white text-center">
               <h1>Name: {user.name}</h1>
               <h1>Age: {user.age}</h1>
               <h1>Username: {user.username}</h1>

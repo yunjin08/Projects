@@ -1,14 +1,22 @@
 import UserDisplay from "./components/UserDisplay";
+import styles from "./style";
+import Navbar from "./components/Navbar";
+import Toggle from "./components/Toggle";
 
 export default function App() {
   return (
     <div>
-      <div className="flex flex-1 mt-10 justify-center items-center w-full">
-        <div className="w-full">
-          <h1 className="flex items-center justify-center text-4xl font-bold text-white font-mono mb-5 text-center">
-            Finding User
-          </h1>
-          <UserDisplay />
+      <Toggle />
+      <div className="bg-primary w-full overflow-hidden navbar-class">
+        <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+          <div className={`${styles.boxWidth}`}>
+            <Navbar />
+          </div>
+        </div>
+        <div className="flex flex-1 mt-10 justify-center items-center w-full">
+          <div className="w-full">
+            <UserDisplay />
+          </div>
         </div>
       </div>
     </div>

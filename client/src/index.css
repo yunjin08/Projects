@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-slate-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #94a3b8 -43.27%,
+    #64748b -21.24%,
+    #475569 12.19%,
+    #334155 29.82%,
+    #1e293b 51.94%,
+    #0f172a 90.29%
+  );
+}

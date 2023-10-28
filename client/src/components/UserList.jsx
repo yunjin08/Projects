@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 export default function UserList({ filterUsers }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-      {filterUsers.map((user) => {
+      {filterUsers.map((user, index) => {
         return (
           <div
-            key={user.id}
+            key={index}
             className="text-xl m-5 text-white text-center font-mono border-2"
           >
             <h1>Name: {user.name}</h1>

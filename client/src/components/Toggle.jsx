@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import UserInputForm from "./UserInputForm";
 
 export default function Toggle() {
   const [toggle, setToggle] = useState(false);
@@ -30,10 +31,13 @@ export default function Toggle() {
             : "hidden"
         }`}
       >
-        <div className="flex items-center justify-center">
-          <h1 className="pt-10 text-white font-poppins text-3xl">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="pt-10 text-white font-medium font-poppins text-3xl">
             Create a User
           </h1>
+          <div>
+            <UserInputForm />
+          </div>
         </div>
       </div>
     </div>

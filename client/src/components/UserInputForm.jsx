@@ -1,11 +1,14 @@
-import { useState } from "react";
 import Inputs from "./Inputs";
 
-export default function UserInputForm({ createdUser }) {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [username, setUsername] = useState("");
-
+export default function UserInputForm({
+  createdUser,
+  name,
+  age,
+  username,
+  setAge,
+  setName,
+  setUsername,
+}) {
   return (
     <div
       className="flex flex-col mt-8 items-center justify-center text-white space-y-8 font-roboto

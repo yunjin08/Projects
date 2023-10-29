@@ -14,8 +14,9 @@ export default function App() {
   const [sortOption, setsortOption] = useState("none");
   const [filterUsers, setFilterUsers] = useState([]);
 
-  const createUser = () => {
-    if (name && age && username) {
+  const createUser = (name, age, username) => {
+    console.log("hi");
+    if (name && age >= 0 && username) {
       axios
         .post("http://localhost:3001/createUsers", {
           name: name,
@@ -63,16 +64,23 @@ export default function App() {
 
   return (
     <div>
-      <Toggle createUser={createUser} />
-      <div className="bg-primary  w-full overflow-hidden navbar-class">
+      <Toggle
+        createUser={createUser}
+        name={name}
+        age={age}
+        username={username}
+        setName={setName}
+        setAge={setAge}
+        setUsername={setUsername}
+      />
+      <div className="bg-slate-900  w-full overflow-hidden navbar-class">
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
-            <Navbar />
+            <Navbar setSortOption={setsortOption} filterUsers={filteredUsers} />
           </div>
         </div>
         <div className="flex flex-1 mt-10 justify-center items-center w-full">
           <div className="w-full">
-            <Sort setSortOption={setsortOption} filterUsers={filteredUsers} />
             <UserList filterUsers={filterUsers} />
           </div>
         </div>

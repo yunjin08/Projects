@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import UserInputForm from "./UserInputForm";
 
-export default function Toggle({ createUser }) {
+export default function Toggle({
+  createUser,
+  name,
+  age,
+  username,
+  setAge,
+  setName,
+  setUsername,
+}) {
   const [toggle, setToggle] = useState(false);
   const container = document.querySelector(".navbar-class");
 
@@ -17,7 +25,8 @@ export default function Toggle({ createUser }) {
   return (
     <div>
       <button
-        className="flex flex-col text-white px-3 font-mono absolute top-[24px] right-[45px] border-[4px] border-double border-slate-500 z-50"
+        className="flex flex-col text-white px-12 py-[4px] absolute top-[24px] right-[45px] 
+        border-[2px] border-slate-500 z-50 rounded-2xl hover:bg-slate-400 hover:text-black font-roboto font-medium"
         onClick={() => {
           setToggle((prev) => !prev);
         }}
@@ -37,7 +46,15 @@ export default function Toggle({ createUser }) {
             Create a User
           </h1>
           <div>
-            <UserInputForm createdUser={createUser} />
+            <UserInputForm
+              createdUser={createUser}
+              name={name}
+              age={age}
+              username={username}
+              setName={setName}
+              setAge={setAge}
+              setUsername={setUsername}
+            />
           </div>
         </div>
       </div>

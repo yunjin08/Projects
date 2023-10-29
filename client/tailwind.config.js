@@ -12,7 +12,10 @@ export default {
         xl: "1700px",
       },
       colors: {
-        primary: "#0f172a",
+        primary: "#020617",
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans"],
       },
     },
   },

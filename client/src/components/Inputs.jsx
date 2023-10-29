@@ -5,7 +5,7 @@ export default function Inputs({ type, placeholder, onChangeHandler }) {
         type={type}
         placeholder={placeholder}
         onChange={onChangeHandler}
-        className="w-28 px-1 bg-black text-white"
+        className=" px-1 pb-2 bg-black text-white mt-1 w-[300px] bg-transparent border-b-[1px]"
       />
     </div>
   );

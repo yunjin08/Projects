@@ -1,6 +1,23 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
-export default function Sort({ setSortOption, filterUsers }) {
+export default function Sort({
+  setSortOption,
+  filterUsers,
+  setFilterUsers,
+  oldFilteredUsers,
+}) {
+  const [find, toFind] = useState("");
+
+  console.log(oldFilteredUsers);
+
+  const findUser = (query) => {
+    const newData = oldFilteredUsers.filter((user) => {
+      return user.name.toLowerCase().includes(query.toLowerCase());
+    });
+    console.log(oldFilteredUsers);
+    setFilterUsers(newData);
+  };
   return (
     <div className="flex items-center ss:items-end  flex-col justify-center w-full">
       <div className="flex items-center justify-right space-x-3 pt-20 ss:pt-10">
@@ -8,6 +25,10 @@ export default function Sort({ setSortOption, filterUsers }) {
           <input
             type="text"
             placeholder="Search"
+            onChange={(event) => {
+              const query = event.target.value;
+              findUser(query);
+            }}
             className="bg-transparent border-b-2 text-white border-x-2 border-t-[0.5px] rounded-lg w-[250px] pl-4 " // Add pr-10 for right padding
           />
           <div className="absolute right-0 top-[5px] flex items-center pr-3">

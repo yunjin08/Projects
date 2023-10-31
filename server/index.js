@@ -55,6 +55,16 @@ app.put("/updateUser/:id", async (req, res) => {
   }
 });
 
+app.delete("/deleteUser/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await UserModel.findByIdAndDelete(userId);
+    res.json(res);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 app.listen(3001, () => {
   console.log("Server runs at local port 3001");
 });

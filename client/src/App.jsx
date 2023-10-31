@@ -13,6 +13,7 @@ export default function App() {
   const [toggle, setToggle] = useState(false);
   const [sortOption, setsortOption] = useState("none");
   const [filterUsers, setFilterUsers] = useState([]);
+  const [oldFilteredUsers, toOld] = useState([]);
 
   const createUser = (name, age, username) => {
     if (name && age >= 0 && username) {
@@ -40,6 +41,7 @@ export default function App() {
     axios.get("http://localhost:3001/getUsers").then((response) => {
       setListofUsers(response.data);
       setFilterUsers(response.data);
+      toOld(response.data);
     });
   }, []);
 
@@ -78,7 +80,12 @@ export default function App() {
       <div className="bg-slate-900  w-full overflow-hidden navbar-class">
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
-            <Navbar setSortOption={setsortOption} filterUsers={filteredUsers} />
+            <Navbar
+              setSortOption={setsortOption}
+              filterUsers={filteredUsers}
+              setFilterUsers={setFilterUsers}
+              oldFilteredUsers={oldFilteredUsers}
+            />
           </div>
         </div>
         <div className="flex flex-1 mt-10 justify-center items-center w-full">

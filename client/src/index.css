@@ -48,3 +48,7 @@
     #11101d 91.61%
   );
 }
+
+.transparent {
+  background: rgba(0, 0, 0, 0.5);
+}

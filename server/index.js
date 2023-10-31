@@ -20,11 +20,35 @@ app.get("/getUsers", async (req, res) => {
   }
 });
 
+app.get("/getUsers/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await UserModel.findById(userId);
+    res.json(user);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 app.post("/createUsers", async (req, res) => {
   try {
     const user = req.body;
     const newUser = new UserModel(user);
     await newUser.save();
+    res.json(user);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+app.put("/updateUser/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await UserModel.findByIdAndUpdate(userId, {
+      name: req.body.name,
+      age: req.body.age,
+      username: req.body.username,
+    });
     res.json(user);
   } catch (err) {
     res.json(err);

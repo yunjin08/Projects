@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function UserList({ filterUsers }) {
   return (
@@ -17,10 +17,13 @@ export default function UserList({ filterUsers }) {
               className="flex items-center justify-center space-x-3 text-base mt-4
           "
             >
-              <button className="px-2 border-[1px] hover:bg-green-900">
+              <Link
+                to={`/updateUser/${user._id}`}
+                className="px-2 border-[1px] hover:bg-green-900"
+              >
                 {" "}
                 Edit{" "}
-              </button>
+              </Link>
               <button className=" px-2 border-[1px] hover:bg-red-900">
                 {" "}
                 Delete{" "}

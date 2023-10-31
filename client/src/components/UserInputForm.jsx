@@ -1,4 +1,5 @@
 import Inputs from "./Inputs";
+import PropTypes from "prop-types";
 
 export default function UserInputForm({
   createdUser,
@@ -73,3 +74,13 @@ export default function UserInputForm({
     </div>
   );
 }
+
+UserInputForm.propTypes = {
+  createdUser: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  setAge: PropTypes.func.isRequired,
+  setName: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+};

@@ -3,7 +3,6 @@ import styles from "./style";
 import Navbar from "./components/Navbar";
 import Toggle from "./components/Toggle";
 import axios from "axios";
-import Sort from "./components/Sort";
 import UserList from "./components/UserList";
 
 export default function App() {
@@ -11,11 +10,11 @@ export default function App() {
   const [age, setAge] = useState(0);
   const [username, setUsername] = useState("");
   const [listofUsers, setListofUsers] = useState([]);
+  const [toggle, setToggle] = useState(false);
   const [sortOption, setsortOption] = useState("none");
   const [filterUsers, setFilterUsers] = useState([]);
 
   const createUser = (name, age, username) => {
-    console.log("hi");
     if (name && age >= 0 && username) {
       axios
         .post("http://localhost:3001/createUsers", {
@@ -30,6 +29,7 @@ export default function App() {
           setAge(0);
           setUsername("");
           alert("Success, User Created");
+          setToggle((prev) => !prev);
         });
     } else {
       alert("Please fill out all required fields.");
@@ -72,6 +72,8 @@ export default function App() {
         setName={setName}
         setAge={setAge}
         setUsername={setUsername}
+        toggle={toggle}
+        setToggle={setToggle}
       />
       <div className="bg-slate-900  w-full overflow-hidden navbar-class">
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>

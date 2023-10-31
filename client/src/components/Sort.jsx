@@ -1,18 +1,25 @@
+import PropTypes from "prop-types";
+
 export default function Sort({ setSortOption, filterUsers }) {
   return (
-    <div>
-      <div className="flex items-center justify-center space-x-3 pt-10">
-        <input
-          type="text"
-          placeholder="Search "
-          className="bg-transparent border-b-2 border-x-2 border-t-[0.5px] rounded-lg w-[150px] pl-10"
-        />
-        <button className="text-white w-[100px] rounded-xl border-[1px] hover:bg-slate-400 hover:text-black">
+    <div className="flex items-center ss:items-end  flex-col justify-center w-full">
+      <div className="flex items-center justify-right space-x-3 pt-20 ss:pt-10">
+        <div className="relative flex items-center">
+          <input
+            type="text"
+            placeholder="Search"
+            className="bg-transparent border-b-2 text-white border-x-2 border-t-[0.5px] rounded-lg w-[250px] pl-4 " // Add pr-10 for right padding
+          />
+          <div className="absolute right-0 top-[5px] flex items-center pr-3">
+            <img src="search.png" alt="Search Icon" className="h-4 w-4" />
+          </div>
+        </div>
+        <button className="text-white w-[85px] rounded-xl border-[1px] hover:bg-slate-400 hover:text-black">
           {" "}
           Search
         </button>
       </div>
-      <div className="space-x-3 flex items-center justify-center mt-4">
+      <div className="space-x-3 flex  justify-center mt-4 mr-[100px]">
         <select
           name="Sort by Age"
           id="age"
@@ -38,3 +45,8 @@ export default function Sort({ setSortOption, filterUsers }) {
     </div>
   );
 }
+
+Sort.propTypes = {
+  setSortOption: PropTypes.func.isRequired,
+  filterUsers: PropTypes.func.isRequired,
+};

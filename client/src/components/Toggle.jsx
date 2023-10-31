@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import UserInputForm from "./UserInputForm";
+import PropTypes from "prop-types";
 
 export default function Toggle({
   createUser,
@@ -9,8 +10,9 @@ export default function Toggle({
   setAge,
   setName,
   setUsername,
+  toggle,
+  setToggle,
 }) {
-  const [toggle, setToggle] = useState(false);
   const container = document.querySelector(".navbar-class");
 
   useEffect(() => {
@@ -25,14 +27,14 @@ export default function Toggle({
   return (
     <div>
       <button
-        className="flex flex-col text-white px-12 py-[4px] absolute top-[24px] right-[45px] 
+        className="flex flex-col text-white px-12 py-[4px] absolute top-[175px] left-1/2 transform -translate-x-1/2 ss:top-[115px] ss:left-[5%] ss:transform-none ss:-translate-x-0
         border-[2px] border-slate-500 z-50 rounded-2xl hover:bg-slate-400 hover:text-black font-roboto font-medium"
         onClick={() => {
           setToggle((prev) => !prev);
         }}
       >
         {" "}
-        Create a <br className="sm:hidden"></br>User{" "}
+        Create a <br className="hidden"></br>User{" "}
       </button>
       <div
         className={`${
@@ -61,3 +63,15 @@ export default function Toggle({
     </div>
   );
 }
+
+Toggle.propTypes = {
+  createUser: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  setAge: PropTypes.func.isRequired,
+  setName: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  toggle: PropTypes.bool.isRequired,
+  setToggle: PropTypes.func.isRequired,
+};

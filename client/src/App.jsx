@@ -8,32 +8,37 @@ import UserList from "./components/UserList";
 export default function App() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [classlevel, setClasslevel] = useState(0);
   const [listofUsers, setListofUsers] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [sortOption, setsortOption] = useState("none");
   const [filterUsers, setFilterUsers] = useState([]);
   const [oldFilteredUsers, toOld] = useState([]);
 
-  const createUser = (name, age, username) => {
-    if (name && age >= 0 && username) {
+  const createUser = (name, age, email, classlevel) => {
+    if (name && age >= 0 && email && classlevel) {
       axios
         .post("http://localhost:3001/createUsers", {
           name: name,
           age: age,
-          username: username,
+          email: email,
+          classlevel: classlevel,
         })
         .then((response) => {
           setFilterUsers((prevList) => [...prevList, response.data]);
           setListofUsers((prevList) => [...prevList, response.data]);
           setName("");
           setAge(0);
-          setUsername("");
+          setEmail("");
+          setClasslevel(0);
           alert("Success, User Created");
           setToggle((prev) => !prev);
         });
     } else {
-      alert("Please fill out all required fields.");
+      alert(
+        "Please fill out all required fields and and fill it with its proper format."
+      );
     }
   };
 
@@ -70,10 +75,12 @@ export default function App() {
         createUser={createUser}
         name={name}
         age={age}
-        username={username}
+        email={email}
+        classlevel={classlevel}
+        setClasslevel={setClasslevel}
         setName={setName}
         setAge={setAge}
-        setUsername={setUsername}
+        setEmail={setEmail}
         toggle={toggle}
         setToggle={setToggle}
       />

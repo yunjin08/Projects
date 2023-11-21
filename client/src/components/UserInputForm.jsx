@@ -1,15 +1,30 @@
 import Inputs from "./Inputs";
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 export default function UserInputForm({
   createdUser,
   name,
   age,
-  username,
+  email,
   setAge,
   setName,
-  setUsername,
+  setEmail,
+  classlevel,
+  setClasslevel,
 }) {
+  const [emails, setEmails] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState("");
+
+  const validateEmail = (input) => {
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    return emailPattern.test(input);
+  };
+
+  useEffect(() => {
+    setIsValidEmail(validateEmail(emails));
+  }, [emails]);
+
   return (
     <div
       className="flex flex-col mt-8 items-center justify-center text-white space-y-8 font-roboto
@@ -19,7 +34,7 @@ export default function UserInputForm({
         <h4>Name</h4>
         <Inputs
           type="text"
-          placeholder="Type your name"
+          placeholder="Enter your name"
           onChangeHandler={(event) => {
             setName(event.target.value);
           }}
@@ -29,25 +44,48 @@ export default function UserInputForm({
         <h4>Age</h4>
         <Inputs
           type="number"
-          placeholder="Type your age"
+          placeholder="Enter your age"
           onChangeHandler={(event) => {
             setAge(event.target.value);
           }}
         />
       </div>
       <div>
-        <h4>Username</h4>
+        <h4>Email</h4>
         <Inputs
-          type="text"
-          placeholder="Type your username"
+          type="email"
+          placeholder="Enter your email"
           onChangeHandler={(event) => {
-            setUsername(event.target.value);
+            const inputeEmail = event.target.value;
+            setEmails(inputeEmail);
+            setIsValidEmail(validateEmail(inputeEmail));
+
+            if (isValidEmail) {
+              setEmail(inputeEmail);
+            }
+          }}
+          value={emails}
+        />
+        {!isValidEmail && emails && (
+          <p className="text-red-500 text-xs mt-1">
+            Please enter a valid email address
+          </p>
+        )}
+      </div>
+
+      <div>
+        <h4>Class Level</h4>
+        <Inputs
+          type="number"
+          placeholder="Enter your class Level"
+          onChangeHandler={(event) => {
+            setClasslevel(event.target.value);
           }}
         />
       </div>
 
       <button
-        onClick={() => createdUser(name, age, username)}
+        onClick={() => createdUser(name, age, email, classlevel)}
         className="text-white font-mono  border-[1px] w-[300px] rounded-2xl hover:text-black hover:bg-white py-1"
       >
         {" "}
@@ -79,8 +117,10 @@ UserInputForm.propTypes = {
   createdUser: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   setAge: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
-  setUsername: PropTypes.func.isRequired,
+  setEmail: PropTypes.func.isRequired,
+  classlevel: PropTypes.number.isRequired,
+  setClasslevel: PropTypes.func.isRequired,
 };

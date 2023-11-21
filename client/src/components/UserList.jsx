@@ -28,7 +28,8 @@ export default function UserList({ filterUsers }) {
           >
             <h1>Name: {user.name}</h1>
             <h1>Age: {user.age}</h1>
-            <h1>Username: {user.username}</h1>
+            <h1>Username: {user.email}</h1>
+            <h1>Classlevel: {user.classlevel}</h1>
             <div
               className="flex items-center justify-center space-x-3 text-base mt-4
           "

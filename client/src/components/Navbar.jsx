@@ -10,7 +10,7 @@ export default function Navbar({
 }) {
   return (
     <div className="mt-4 flex flex-col ss:flex-row ">
-      <h1 className="flex  justify-center text-4xl p-5 font-bold text-white font-mono text-center">
+      <h1 className="flex -ml-[9rem] justify-center text-4xl p-5 font-bold text-white font-mono text-center">
         Finding User
       </h1>
       <div className=" flex flex-1 flex-col items-center justify-center w-full ">

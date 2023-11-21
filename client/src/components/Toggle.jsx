@@ -6,12 +6,14 @@ export default function Toggle({
   createUser,
   name,
   age,
-  username,
+  email,
   setAge,
   setName,
-  setUsername,
+  setEmail,
   toggle,
   setToggle,
+  classlevel,
+  setClasslevel,
 }) {
   const container = document.querySelector(".navbar-class");
 
@@ -39,7 +41,7 @@ export default function Toggle({
       <div
         className={`${
           toggle
-            ? "w-[400px] h-[600px] bg-slate-gradient absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 rounded-2xl z-10"
+            ? "w-[400px] h-[700px] bg-slate-gradient absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 rounded-2xl z-10"
             : "hidden"
         }`}
       >
@@ -52,10 +54,12 @@ export default function Toggle({
               createdUser={createUser}
               name={name}
               age={age}
-              username={username}
+              email={email}
               setName={setName}
               setAge={setAge}
-              setUsername={setUsername}
+              setEmail={setEmail}
+              classlevel={classlevel}
+              setClasslevel={setClasslevel}
             />
           </div>
         </div>
@@ -68,10 +72,12 @@ Toggle.propTypes = {
   createUser: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   setAge: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
-  setUsername: PropTypes.func.isRequired,
+  setEmail: PropTypes.func.isRequired,
   toggle: PropTypes.bool.isRequired,
   setToggle: PropTypes.func.isRequired,
+  classlevel: PropTypes.number.isRequired,
+  setClasslevel: PropTypes.func.isRequired,
 };

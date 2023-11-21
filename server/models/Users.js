@@ -9,8 +9,12 @@ const UsersSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  username: {
+  email: {
     type: String,
+    required: true,
+  },
+  classlevel: {
+    type: Number,
     required: true,
   },
 });

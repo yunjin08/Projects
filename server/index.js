@@ -47,7 +47,8 @@ app.put("/updateUser/:id", async (req, res) => {
     const user = await UserModel.findByIdAndUpdate(userId, {
       name: req.body.name,
       age: req.body.age,
-      username: req.body.username,
+      email: req.body.email,
+      classlevel: req.body.classlevel,
     });
     res.json(user);
   } catch (err) {
